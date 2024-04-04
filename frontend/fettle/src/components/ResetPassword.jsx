@@ -2,6 +2,11 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+
+import './Login.css'
+import user_icon from '../assessts/person.png'
+import email_icon from '../assessts/email.png'
+import password_icon from '../assessts/password.png'
 function ResetPassword() {
   const [password, setpassword] = useState("");
   const { token } = useParams();
@@ -23,17 +28,25 @@ function ResetPassword() {
       });
   }
   return (
-    <div>
-      <div>
-        <label htmlFor="password">New Password : </label>
-        <input
-          id="password"
-          onChange={(e) => setpassword(e.target.value)}
-        ></input>
+  
+    <div className="conContainer">
+    <div className="container">
+      <div className="header">
+        <div className="text">Reset Password</div>
+        <div className="underline"></div>
       </div>
-      <div>
-        <button onClick={SubmitHandler}>Reset Password</button>
+      <div className="inputs">
+        <div className="input">
+          <img src={password_icon} alt="" />
+          <input type="password" placeholder="Password"  onChange={(e) => setpassword(e.target.value)}/>
+        </div>
       </div>
+      <div className="submit-container">
+       
+      
+        <div className='submit' onClick={()=>SubmitHandler()}>Reset Password</div>
+      </div>
+    </div>
     </div>
   );
 }

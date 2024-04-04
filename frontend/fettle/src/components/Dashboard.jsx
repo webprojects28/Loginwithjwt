@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import img from '../assessts/bg-image.png'
 import axios from "axios";
+import Navbar from './Navbar';
 function Dashboard() {
     const navigate=useNavigate()
     axios.defaults.withCredentials=true;
+    
     useEffect(()=>{
       axios({
         url: "http://localhost:8000/verify",
@@ -14,13 +17,18 @@ function Dashboard() {
 
             }
             else{
-                navigate('/')
+                navigate('/login')
             }
-            console.log(res," is the res")
         })
     },[])
+
   return (
-    <div>Dashboard</div>
+    <div>
+      <Navbar/>
+      <div className="main">
+        <img src={img} alt="" />
+      </div>
+    </div>
   )
 }
 

@@ -3,6 +3,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import './Login.css'
+import user_icon from '../assessts/person.png'
+import email_icon from '../assessts/email.png'
+import password_icon from '../assessts/password.png'
 function ForgotPassword() {
   const navigate = useNavigate();
   const [email, setemail] = useState("");
@@ -25,14 +29,24 @@ function ForgotPassword() {
       });
   }
   return (
-    <div>
-      <div>
-        <label htmlFor="email">Email : </label>
-        <input id="email" onChange={(e) => setemail(e.target.value)}></input>
+
+    <div className="conContainer">
+    <div className="container">
+      <div className="header">
+        <div className="text">Forgot Password</div>
+        <div className="underline"></div>
       </div>
-      <div>
-        <button onClick={SubmitHandler}>Reset</button>
+      <div className="inputs">
+          <div className="input">
+            <img src={email_icon} alt="" />
+            <input type="email" placeholder="Email Id" onChange={(e) => setemail(e.target.value)}/>
+          </div>
       </div>
+      <div className="submit-container">
+       
+        <div className='submit' onClick={()=>SubmitHandler()}>Submit</div>
+      </div>
+    </div>
     </div>
   );
 }

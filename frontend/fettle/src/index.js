@@ -1,25 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider ,Navigate} from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
-import Home from "./components/Home";
+
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Userpage from "./components/Userpage";
-import PrivateRoute from "./components/PrivateRoute";
 import ForgotPassword from "./components/ForgotPassword";
 import Dashboard from "./components/Dashboard";
 import ResetPassword from "./components/ResetPassword";
+import CalorieCalculator from './components/CalorieCalculator';
+import DietPlanner from './components/DietPlanner';
+import AboutUs from './components/AboutUs'
+import ContactUs from './components/ContactUs'
+import Navbar from "./components/Navbar";
+import RecipeDetail from "./components/RecipeDetail";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const router = createBrowserRouter([
+  
   {
     path: "/",
-    element: <Home />,
+    element: <Navigate to="/dashboard" /> ,
   },
   {
     path: "/login",
-    element: <Login />,
+    element:  <Login />,
   },
   {
     path: "/signup",
@@ -31,15 +37,35 @@ const router = createBrowserRouter([
   },
   {
     path: "/resetpassword/:token",
-    element: <ResetPassword />,
+    element:<ResetPassword /> ,
   },
   {
     path: "/user/:name",
-    element: <Userpage />,
+    element: <><Navbar/> <Userpage /></>,
   },
   {
     path:'/dashboard',
-    element:<Dashboard/>
+    element:<><Navbar/> <Dashboard/></>,
+  },
+  {
+    path:'/caloriecalculator',  
+    element:<><Navbar/> <CalorieCalculator/></>,
+  },
+  {
+    path:'/dietplanner',  
+    element:<><Navbar/> <DietPlanner/></>,
+  },
+  {
+    path:"/recipe/:id",
+    element : <><Navbar/> <RecipeDetail/></> ,
+  },
+  {
+    path:'/aboutus',  
+    element:<><Navbar/> <AboutUs/></>,
+  },
+  {
+    path:'/contactus',
+    element:<><Navbar/> <ContactUs/></>,
   }
 ]);
 root.render(
